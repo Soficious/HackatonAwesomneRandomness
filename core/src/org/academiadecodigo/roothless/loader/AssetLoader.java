@@ -23,6 +23,13 @@ public class AssetLoader {
     public static Preferences prefs;
 
     public static void load() {
+        plyrDeath =Gdx.audio.newSound(Gdx.files.internal("sounds/playerDeath.mp3"));
+        plyrHit =Gdx.audio.newSound(Gdx.files.internal("sounds/playerHit.mp3"));
+        plyrAtk = Gdx.audio.newSound(Gdx.files.internal("sounds/playerAtack.mp3"));
+        footsteps = Gdx.audio.newSound(Gdx.files.internal("sounds/footsteps.wav"));
+        e1Atk = Gdx.audio.newSound(Gdx.files.internal("sounds/monsterAtack.wav"));
+        e1Death =Gdx.audio.newSound(Gdx.files.internal("sounds/mosterDeath.mp3"));
+
 
         playerSprite = new Texture(Gdx.files.internal("playerSprite.png"));
         enemy1Sprite = new Texture(Gdx.files.internal("enemy1Sprite.png"));
