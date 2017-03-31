@@ -9,7 +9,7 @@ import org.academiadecodigo.roothless.util.RNG;
 /**
  * Created by codecadet on 30/03/17.
  */
-public class Player extends Actor{
+public class Player extends Actor {
 
     private int healthPoints;
     private int attack;
@@ -38,6 +38,7 @@ public class Player extends Actor{
     public void setHealthPoints(int healthPoints) {
         this.healthPoints = healthPoints;
     }
+
     public Rectangle getHitbox() {
         return hitbox;
     }
@@ -114,12 +115,20 @@ public class Player extends Actor{
         this.alive = alive;
     }
 
-    public void attack() {}
+    public void attack() {
+    }
 
-    public void inverterSwitch () {
-        if (moveCounter>= RNG.movePityCounter()) {
-            moveCounter= 0;
+    public void inverterSwitch() {
+        if (moveCounter >= RNG.movePityCounter()) {
+            moveCounter = 0;
             inverted = true;
+        } else if (pityCounter >= RNG.movePityCounter()) {
+            pityCounter = 0;
+            inverted = false;
+        }
+
+        if (inverted) {
+            pityCounter++;
         } else {
             moveCounter++;
         }

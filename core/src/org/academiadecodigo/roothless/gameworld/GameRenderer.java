@@ -56,7 +56,7 @@ public class GameRenderer {
 
     public void drawPlayer() {
         batcher.begin();
-        batcher.draw(playerTexture, player.getPosX(), player.getPosY());
+        batcher.draw(player.getTextureRegion(), player.getPosX(), player.getPosY());
         batcher.setProjectionMatrix(cam.combined);
         batcher.end();
     }

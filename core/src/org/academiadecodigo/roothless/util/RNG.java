@@ -6,6 +6,6 @@ package org.academiadecodigo.roothless.util;
 public class RNG {
 
     public static int movePityCounter() {
-        return (int) (Math.random() * (7 - 2) + 2);
+        return (int) (Math.random() * (10 - 3) + 3);
     }
 }

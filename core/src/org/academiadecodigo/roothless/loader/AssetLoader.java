@@ -38,30 +38,30 @@ public class AssetLoader {
         enemy1Sprite = new Texture(Gdx.files.internal("spritesheets/enemy1Sprite.png"));
 
         //player texture regions
-        front1 = new TextureRegion(playerSprite, 0, 0, 32, 32);
-        front2 = new TextureRegion(playerSprite, 32, 0, 32, 32);
-        right1 = new TextureRegion(playerSprite, 64, 0, 32, 32);
-        right2 = new TextureRegion(playerSprite, 96, 0, 32, 32);
-        left1 = new TextureRegion(playerSprite, 128, 0, 32, 32);
-        left2 = new TextureRegion(playerSprite, 160, 0, 32, 32);
+        right1 = new TextureRegion(playerSprite, 0, 0, 32, 32);
+        right2 = new TextureRegion(playerSprite, 32, 0, 32, 32);
+        left2 = new TextureRegion(playerSprite, 64, 0, 32, 32);
+        left1 = new TextureRegion(playerSprite, 96, 0, 32, 32);
+        front1 = new TextureRegion(playerSprite, 128, 0, 32, 32);
+        front2 = new TextureRegion(playerSprite, 160, 0, 32, 32);
         back1 = new TextureRegion(playerSprite, 192, 0, 32, 32);
         back2 = new TextureRegion(playerSprite, 224, 0, 32, 32);
-        atkFront1 = new TextureRegion(playerSprite, 0, 32, 32, 32);
-        atkFront2 = new TextureRegion(playerSprite, 32, 32, 32, 32);
-        atkRight1 = new TextureRegion(playerSprite, 64, 32, 32, 32);
-        atkRight2 = new TextureRegion(playerSprite, 96, 32, 32, 32);
-        atkLeft1 = new TextureRegion(playerSprite, 128, 32, 32, 32);
-        atkLeft2 = new TextureRegion(playerSprite, 160, 32, 32, 32);
+        atkRight1 = new TextureRegion(playerSprite, 0, 32, 32, 32);
+        atkRight2 = new TextureRegion(playerSprite, 32, 32, 32, 32);
+        atkLeft2 = new TextureRegion(playerSprite, 64, 32, 32, 32);
+        atkLeft1 = new TextureRegion(playerSprite, 96, 32, 32, 32);
+        atkFront1 = new TextureRegion(playerSprite, 128, 32, 32, 32);
+        atkFront2 = new TextureRegion(playerSprite, 160, 32, 32, 32);
         atkBack1 = new TextureRegion(playerSprite, 192, 32, 32, 32);
         atkBack2 = new TextureRegion(playerSprite, 224, 32, 32, 32);
 
         //enemy texture regions
-        e1Front1 = new TextureRegion(enemy1Sprite, 0, 0, 32, 32);
-        e1Front2 = new TextureRegion(enemy1Sprite, 32, 0, 32, 32);
-        e1Right1 = new TextureRegion(enemy1Sprite, 64, 0, 32, 32);
-        e1Right2 = new TextureRegion(enemy1Sprite, 96, 0, 32, 32);
-        e1Left1 = new TextureRegion(enemy1Sprite, 128, 0, 32, 32);
-        e1Left2 = new TextureRegion(enemy1Sprite, 160, 32, 32, 32);
+        e1Right1 = new TextureRegion(enemy1Sprite, 0, 0, 32, 32);
+        e1Right2 = new TextureRegion(enemy1Sprite, 32, 0, 32, 32);
+        e1Left2 = new TextureRegion(enemy1Sprite, 64, 0, 32, 32);
+        e1Left1 = new TextureRegion(enemy1Sprite, 96, 0, 32, 32);
+        e1Front1 = new TextureRegion(enemy1Sprite, 128, 0, 32, 32);
+        e1Front2 = new TextureRegion(enemy1Sprite, 160, 32, 32, 32);
         e1Back1 = new TextureRegion(enemy1Sprite, 192, 32, 32, 32);
         e1Back2 = new TextureRegion(enemy1Sprite, 224, 32, 32, 32);
 
