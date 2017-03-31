@@ -50,9 +50,9 @@ public class GameScreen implements Screen {
         renderer.render();
 
 
-        /*renderer.getBatch().begin();
+        renderer.getBatch().begin();
         player.draw(renderer.getBatch());
-        renderer.getBatch().end();*/
+        renderer.getBatch().end();
     }
 
     @Override
