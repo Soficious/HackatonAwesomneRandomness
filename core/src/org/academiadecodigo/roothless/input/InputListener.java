@@ -100,7 +100,12 @@ public class InputListener implements InputProcessor {
                     player.setPosY(player.getPosY() - 32);
                 }
                 return true;
-
+            case Input.Keys.S:
+                player.saveGame();
+                return true;
+            case Input.Keys.L:
+                player.loadGame();
+                return true;
             case Input.Keys.DOWN:
                 //colision detection
                 alternateBack();
@@ -114,7 +119,7 @@ public class InputListener implements InputProcessor {
             case Input.Keys.RIGHT:
                 //colision detection
                 alternateRight();
-                if(player.getPosX() + 32 >= 736) {
+                if (player.getPosX() + 32 >= 736) {
                     player.setPosX(736);
                 } else {
                     player.setPosX(player.getPosX() + 32);
@@ -154,7 +159,7 @@ public class InputListener implements InputProcessor {
             case Input.Keys.DOWN:
                 //colision detection
                 alternateLeft();
-                if (player.getPosX() -32 <= 32) {
+                if (player.getPosX() - 32 <= 32) {
                     player.setPosX(32);
                 } else {
                     player.setPosX(player.getPosX() - 32);
@@ -164,7 +169,7 @@ public class InputListener implements InputProcessor {
             case Input.Keys.RIGHT:
                 //colision detection
                 alternateFront();
-                if (player.getPosY() -32 <= 32) {
+                if (player.getPosY() - 32 <= 32) {
                     player.setPosY(32);
                 } else {
                     player.setPosY(player.getPosY() - 32);
@@ -174,7 +179,7 @@ public class InputListener implements InputProcessor {
             case Input.Keys.LEFT:
                 //colision detection
                 alternateRight();
-                if (player.getPosX() +32 >= 768) {
+                if (player.getPosX() + 32 >= 768) {
                     player.setPosX(768);
                 } else {
                     player.setPosX(player.getPosX() + 32);

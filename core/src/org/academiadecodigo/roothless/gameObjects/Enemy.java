@@ -28,33 +28,42 @@ public class Enemy {
     }
 
     public void enemyMovement() {
-        double result = Math.random();
-        System.out.println(result);
-        if (result <= 0.25) {
-            if (getY() - 32 <= 32) {
-                posY = 32;
-            } else {
-                posY -= 32;
-            }
-        } else if(result >= 0.26 && result <= 0.50) {
-            if (getY() + 32 >= 512) {
-                posY = 512;
-            } else {
-                posX += 32;
-            }
-        } else if (result >= 0.51 && result <= 0.75) {
-            if(getX() + 32 >= 736) {
-                posX = 736;
-            } else {
-                posX += 32;
-            }
-        } else {
-            if (getX() - 32 <= 32) {
-                posX = 32;
-            } else {
-                posX -= 32;
-            }
+        //double result = Math.random();
+        int rng = (int) (Math.floor(Math.random() * 4));
+
+        System.out.println(rng);
+
+        switch (rng) {
+            case 0:
+                if (getY() - 32 <= 32) {
+                    posY = 32;
+                } else {
+                    posY -= 32;
+                }
+                break;
+            case 1:
+                if (getY() + 32 >= 512) {
+                    posY = 512;
+                } else {
+                    posX += 32;
+                }
+                break;
+            case 2:
+                if (getX() + 32 >= 736) {
+                    posX = 736;
+                } else {
+                    posX += 32;
+                }
+                break;
+            case 3:
+                if (getX() - 32 <= 32) {
+                    posX = 32;
+                } else {
+                    posX -= 32;
+                }
+                break;
         }
+
     }
 
     public int getHealthPoints() {

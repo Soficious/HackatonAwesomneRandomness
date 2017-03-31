@@ -1,5 +1,7 @@
 package org.academiadecodigo.roothless.gameObjects;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
@@ -24,6 +26,7 @@ public class Player extends Actor {
     private int pityCounter;
     private boolean alive = true;
     private boolean animationSwitch;
+    private Preferences saveFile;
 
 
     public Player(int posX, int posY) {
@@ -32,6 +35,19 @@ public class Player extends Actor {
         this.posX = posX;
         this.posY = posY;
         AssetLoader.bgMusic.loop();
+        saveFile = Gdx.app.getPreferences("save.prefs");
+    }
+
+    public void saveGame() {
+        saveFile.putInteger("PlayerPosX", this.getPosX());
+        saveFile.putInteger("PlayerPosY", this.getPosY());
+        saveFile.flush();
+    }
+
+    public void loadGame() {
+        this.setPosY(saveFile.getInteger("PlayerPosY"));
+        this.setPosX(saveFile.getInteger("PlayerPosY"));
+        saveFile.flush();
     }
 
     public int getHealthPoints() {
