@@ -15,11 +15,12 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class AssetLoader {
 
     public static Animation playerAnimation;
-    public static Texture playerSprite, enemy1Sprite;
+    public static Texture playerSprite, enemy1Sprite, menu, credits, hearts;
     public static TextureRegion front1, front2, right1, right2, left1, left2, back1, back2,
             atkFront1, atkFront2, atkRight1, atkRight2, atkLeft1, atkLeft2, atkBack1, atkBack2;
     public static TextureRegion e1Front1, e1Front2, e1Right1, e1Right2, e1Left1, e1Left2, e1Back1, e1Back2,
             e1AtkFront1, e1AtkFront2, e1AtkRight1, e1AtkRight2, e1AtkLeft1, e1AtkLeft2, e1AtkBack1, e1AtkBack2;
+    public static TextureRegion hearts1, hearts2, hearts3, hearts4, hearts5;
     //public static BitmapFont font;
     //public static BitmapFont shadow;
     public static Sound plyrAtk, plyrHit, plyrDeath, bgMusic, e1Atk, e1Death, footsteps;
@@ -32,10 +33,14 @@ public class AssetLoader {
         footsteps = Gdx.audio.newSound(Gdx.files.internal("sounds/footsteps.wav"));
         e1Atk = Gdx.audio.newSound(Gdx.files.internal("sounds/monsterAtack.wav"));
         e1Death = Gdx.audio.newSound(Gdx.files.internal("sounds/monsterDeath.mp3"));
+        bgMusic = Gdx.audio.newSound(Gdx.files.internal("sounds/bgmusic.mp3"));
 
 
         playerSprite = new Texture(Gdx.files.internal("spritesheets/playerSprite.png"));
         enemy1Sprite = new Texture(Gdx.files.internal("spritesheets/enemy1Sprite.png"));
+        menu = new Texture(Gdx.files.internal("MENU.jpg"));
+        credits = new Texture(Gdx.files.internal("CREDITOS.jpg"));
+        hearts = new Texture(Gdx.files.internal("life.png"));
 
         //player texture regions
         right1 = new TextureRegion(playerSprite, 0, 0, 32, 32);
@@ -54,6 +59,12 @@ public class AssetLoader {
         atkFront2 = new TextureRegion(playerSprite, 160, 32, 32, 32);
         atkBack1 = new TextureRegion(playerSprite, 192, 32, 32, 32);
         atkBack2 = new TextureRegion(playerSprite, 224, 32, 32, 32);
+
+        hearts1 = new TextureRegion(hearts, 0, 0, 32, 32);
+        hearts2 = new TextureRegion(hearts, 0, 32, 64, 32);
+        hearts3 = new TextureRegion(hearts, 0, 64, 96, 32);
+        hearts4 = new TextureRegion(hearts, 0, 96, 128, 32);
+        hearts5 = new TextureRegion(hearts, 0, 128, 160, 32);
 
         //enemy texture regions
         e1Right1 = new TextureRegion(enemy1Sprite, 0, 0, 32, 32);

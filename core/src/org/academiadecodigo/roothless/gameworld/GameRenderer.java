@@ -9,6 +9,7 @@ import org.academiadecodigo.roothless.gameObjects.Enemy;
 import org.academiadecodigo.roothless.gameObjects.Player;
 import org.academiadecodigo.roothless.input.InputListener;
 import org.academiadecodigo.roothless.loader.AssetLoader;
+import org.academiadecodigo.roothless.screen.GameScreen;
 
 import java.util.ArrayList;
 
@@ -58,6 +59,7 @@ public class GameRenderer {
     public void drawPlayer() {
         batcher.begin();
         batcher.draw(player.getTextureRegion(), player.getPosX(), player.getPosY());
+        batcher.draw(AssetLoader.hearts5, 0, 550);
        // batcher.setProjectionMatrix(cam.combined);
         batcher.end();
     }
@@ -73,6 +75,18 @@ public class GameRenderer {
                     e.getY());
             //batcher.setProjectionMatrix(cam.combined);
         }
+        batcher.end();
+    }
+
+    public void drawMenu() {
+        batcher.begin();
+        batcher.draw(AssetLoader.menu, 0, 0);
+        batcher.end();
+    }
+
+    public void drawCredits() {
+        batcher.begin();
+        batcher.draw(AssetLoader.credits, 0, 0);
         batcher.end();
     }
 }

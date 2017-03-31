@@ -1,10 +1,16 @@
 package org.academiadecodigo.roothless.input;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import org.academiadecodigo.roothless.gameObjects.Enemy;
 import org.academiadecodigo.roothless.gameObjects.Player;
+import org.academiadecodigo.roothless.gameworld.GameRenderer;
+import org.academiadecodigo.roothless.gameworld.GameState;
 import org.academiadecodigo.roothless.loader.AssetLoader;
+import org.academiadecodigo.roothless.screen.GameScreen;
 
 import java.util.ArrayList;
 
@@ -15,19 +21,22 @@ public class InputListener implements InputProcessor {
 
     private Player player;
     private ArrayList<Enemy> enemyList;
+    private Texture menu;
+    private GameScreen gameScreen;
 
-    public InputListener(Player player, ArrayList<Enemy> enemyList) {
+    public InputListener(Player player, ArrayList<Enemy> enemyList, Texture menu, GameScreen gameScreen) {
         this.player = player;
-        this.enemyList = enemyList;;
+        this.enemyList = enemyList;
+        this.menu = menu;
+        this.gameScreen = gameScreen;
     }
 
     @Override
     public boolean keyDown(int keycode) {
+        AssetLoader.footsteps.play();
 
-
-        if (keycode == Input.Keys.SPACE) {
-            player.attack();
-            return true;
+        if (keycode == Input.Keys.Q) {
+            gameScreen.setState(GameState.GAMEOVER);
         }
 
         if (!player.isInverted()) {
@@ -51,7 +60,10 @@ public class InputListener implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        return false;
+
+        gameScreen.setState(GameState.RUNNING);
+
+        return true;
     }
 
     @Override

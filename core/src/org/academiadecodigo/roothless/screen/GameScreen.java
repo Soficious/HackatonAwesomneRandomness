@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.MapObjects;
@@ -17,6 +18,7 @@ import com.badlogic.gdx.math.Rectangle;
 import org.academiadecodigo.roothless.gameObjects.Enemy;
 import org.academiadecodigo.roothless.gameObjects.Player;
 import org.academiadecodigo.roothless.gameworld.GameRenderer;
+import org.academiadecodigo.roothless.gameworld.GameState;
 import org.academiadecodigo.roothless.gameworld.GameWorld;
 import org.academiadecodigo.roothless.input.InputListener;
 import org.academiadecodigo.roothless.loader.AssetLoader;
@@ -30,6 +32,7 @@ import static org.academiadecodigo.roothless.loader.AssetLoader.enemy1Sprite;
  */
 public class GameScreen implements Screen {
 
+    private GameState state;
     private Player player;
     private TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
@@ -37,6 +40,7 @@ public class GameScreen implements Screen {
     private GameWorld world;
     private GameRenderer gameRenderer;
     private ArrayList<Enemy> enemies;
+    public static Texture menu;
 
 
 //    int objectLayerId = 5;
@@ -46,12 +50,13 @@ public class GameScreen implements Screen {
 
 
     public GameScreen() {
+        state = GameState.READY;
         float screenWidth = Gdx.graphics.getWidth();
         float screebHeigth = Gdx.graphics.getHeight();
         float gameWidth = 136;
         float gameHeigth = screebHeigth / (screenWidth / gameWidth);
         camera = new OrthographicCamera();
-
+        menu = AssetLoader.menu;
         enemies = new ArrayList<Enemy>();
         Enemy e = new Enemy(632, 230, AssetLoader.e1Right1);
         Enemy e1 = new Enemy(272, 90, AssetLoader.e1Right1);
@@ -79,7 +84,7 @@ public class GameScreen implements Screen {
         gameRenderer.initGameObjects();
         gameRenderer.initAssets();
 
-        Gdx.input.setInputProcessor(new InputListener(world.getPlayer(), enemies));
+        Gdx.input.setInputProcessor(new InputListener(world.getPlayer(), enemies, menu, this));
 
         //int objectLayerId = 1;
         //MapLayers collisionObjectLayer = map.getLayers();
@@ -126,11 +131,26 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
+
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        renderer.render();
-        gameRenderer.drawPlayer();
-        gameRenderer.drawEnemies();
+
+        switch(state) {
+            case READY:
+                gameRenderer.drawMenu();
+                break;
+
+            case RUNNING:
+                renderer.render();
+                gameRenderer.drawPlayer();
+                gameRenderer.drawEnemies();
+                break;
+
+            case GAMEOVER:
+                gameRenderer.drawCredits();
+                break;
+
+        }
     }
 
     @Override
@@ -159,5 +179,9 @@ public class GameScreen implements Screen {
     public void dispose() {
         map.dispose();
         renderer.dispose();
+    }
+
+    public void setState(GameState state) {
+        this.state = state;
     }
 }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import org.academiadecodigo.roothless.loader.AssetLoader;
 import org.academiadecodigo.roothless.util.RNG;
 
 /**
@@ -30,6 +31,7 @@ public class Player extends Actor {
         attack = 1;
         this.posX = posX;
         this.posY = posY;
+        AssetLoader.bgMusic.loop();
     }
 
     public int getHealthPoints() {
