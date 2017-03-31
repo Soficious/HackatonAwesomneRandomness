@@ -1,46 +1,35 @@
 package org.academiadecodigo.roothless.input;
 
-import com.badlogic.gdx.ApplicationListener;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import org.academiadecodigo.roothless.gameObjects.Player;
 
 /**
  * Created by codecadet on 30/03/17.
  */
 public class InputListener implements InputProcessor {
 
+    private Player player;
+
+    public InputListener(Player player) {
+        this.player = player;
+    }
+
     @Override
     public boolean keyDown(int keycode) {
 
-        switch (keycode) {
-            case Input.Keys.UP:
-                //colision detection
-                //movement
-                break;
 
-            case Input.Keys.DOWN:
-                //colision detection
-                //movement
-                break;
 
-            case Input.Keys.RIGHT:
-                //colision detection
-                //movement
-                break;
-
-            case Input.Keys.LEFT:
-                //colision detection
-                //movement
-                break;
-
-            case Input.Keys.SPACE:
-                //colision detection
-                //attack
-                break;
-
+        if (keycode == Input.Keys.SPACE) {
+            player.attack();
+            return true;
         }
-        return false;
+
+        if (!player.isInverted()) {
+            return regularMovement(keycode);
+        } else {
+            return invertedMovement(keycode);
+        }
     }
 
     @Override
@@ -76,5 +65,66 @@ public class InputListener implements InputProcessor {
     @Override
     public boolean scrolled(int amount) {
         return false;
+    }
+
+    public boolean regularMovement(int keycode) {
+
+        player.inverterSwitch();
+
+        switch (keycode) {
+            case Input.Keys.UP:
+                //colision detection
+                player.setPosY(player.getPosY() - 32);
+                return true;
+
+            case Input.Keys.DOWN:
+                //colision detection
+                player.setPosY(player.getPosY() + 32);
+                return true;
+
+            case Input.Keys.RIGHT:
+                //colision detection
+                player.setPosX(player.getPosX() + 32);
+                return true;
+
+            case Input.Keys.LEFT:
+                //colision detection
+                player.setPosX(player.getPosX() - 32);
+                return true;
+
+            default:
+                return false;
+        }
+    }
+
+    public boolean invertedMovement(int keycode) {
+
+        player.inverterSwitch();
+
+        switch (keycode) {
+            case Input.Keys.UP:
+                //colision detection
+                player.setPosY(player.getPosY() + 32);
+                return true;
+
+            case Input.Keys.DOWN:
+                //colision detection
+                player.setPosX(player.getPosX() - 32);
+                return true;
+
+            case Input.Keys.RIGHT:
+                //colision detection
+                player.setPosY(player.getPosY() - 32);
+                return true;
+
+            case Input.Keys.LEFT:
+                //colision detection
+                player.setPosX(player.getPosX() + 32);
+                return true;
+
+            default:
+                return false;
+
+        }
     }
 }
