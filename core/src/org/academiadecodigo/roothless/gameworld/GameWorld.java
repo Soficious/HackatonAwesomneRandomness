@@ -8,11 +8,11 @@ import org.academiadecodigo.roothless.gameObjects.Player;
  */
 public class GameWorld {
 
-    private Player player;
+    private Player player = new Player(0, 574);
     private Enemy enemy;
     private boolean isAlive = false;
     private GameState currentState;
-    private WorldMap map;
+    //private WorldMap map;
 
 
 

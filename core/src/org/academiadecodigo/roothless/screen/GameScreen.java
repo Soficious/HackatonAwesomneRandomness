@@ -8,7 +8,10 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import org.academiadecodigo.roothless.gameObjects.Player;
+import org.academiadecodigo.roothless.gameworld.GameRenderer;
+import org.academiadecodigo.roothless.gameworld.GameWorld;
 import org.academiadecodigo.roothless.input.InputListener;
+import org.academiadecodigo.roothless.loader.AssetLoader;
 
 /**
  * Created by codecadet on 30/03/17.
@@ -18,20 +21,24 @@ public class GameScreen implements Screen {
     private TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
     private OrthographicCamera camera;
-    private Player player;
+    private GameWorld world;
+    private GameRenderer gameRenderer;
 
 
-/*    public GameScreen() {
+    public GameScreen() {
+        float screenWidth = Gdx.graphics.getWidth();
+        float screebHeigth = Gdx.graphics.getHeight();
+        float gameWidth = 136;
+        float gameHeigth = screebHeigth / (screenWidth / gameWidth);
+
+        int midPointY = (int) (gameHeigth / 2);
+
+        world = new GameWorld();
+        //renderer = new GameRenderer(world);
 
         Gdx.input.setInputProcessor(new InputListener());
-    }*/
 
-    /*float screenWidth = Gdx.graphics.getWidth();
-    float screenHeigth = Gdx.graphics.getHeight();*/
-
-  /*  int mindPointY = (int) (screenHeigth/2);
-    int mindPointX = (int) (screenWidth/2);
-*/
+    }
 
 
     @Override
@@ -46,13 +53,10 @@ public class GameScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        AssetLoader.load();
         renderer.setView(camera);
         renderer.render();
-
-
-        renderer.getBatch().begin();
-        player.draw(renderer.getBatch());
-        renderer.getBatch().end();
+        gameRenderer.drawPlayer();
     }
 
     @Override

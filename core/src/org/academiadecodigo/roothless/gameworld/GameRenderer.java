@@ -27,7 +27,7 @@ public class GameRenderer {
     private Enemy enemy;
     private boolean isEnemyAlive = true;
 
-    public GameRenderer(GameWorld world, int gameHeigth, int gameWidth) {
+    public GameRenderer(GameWorld world) {
         this.world = world;
         cam = new OrthographicCamera();
         batcher = new SpriteBatch();
@@ -44,14 +44,13 @@ public class GameRenderer {
     }
 
     public void initGameObjects() {
-        map = world.getMap;
+        //map = world.getMap;
         player = world.getPlayer();
         enemy = world.getEnemy();
 
     }
 
     public void drawPlayer() {
-
     }
 
 

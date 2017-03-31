@@ -1,9 +1,7 @@
 package org.academiadecodigo.roothless.gameObjects;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Batch;
+
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -43,39 +41,6 @@ public class Player extends Sprite {
         this.attack = attack;
     }
 
-<<<<<<< HEAD
-    @Override
-    public void draw(Batch batch) {
-        update(Gdx.graphics.getDeltaTime());
-        super.draw(batch);
-    }
-
-    public void update(float delta){
-
-=======
-    public boolean isAlive() {
-        return isAlive;
-    }
 
 
-    public void dead(){
-        isAlive = false;
-    }
-
-    public float getX() {
-        return position.x;
-    }
-
-    public float getY() {
-        return position.y;
-    }
-
-    public float getWidth() {
-        return width;
-    }
-
-    public float getHeight() {
-        return height;
->>>>>>> master
-    }
 }
