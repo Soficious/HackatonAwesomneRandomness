@@ -33,7 +33,7 @@ public class GameRenderer {
         this.world = world;
         batcher = new SpriteBatch();
         this.cam = camera;
-        batcher.setProjectionMatrix(camera.combined);
+//        batcher.setProjectionMatrix(camera.combined);
         shapeRenderer = new ShapeRenderer();
         shapeRenderer.setProjectionMatrix(camera.combined);
         AssetLoader.load();
@@ -57,6 +57,7 @@ public class GameRenderer {
     public void drawPlayer() {
         batcher.begin();
         batcher.draw(playerTexture, player.getPosX(), player.getPosY());
+        batcher.setProjectionMatrix(cam.combined);
         batcher.end();
     }
 

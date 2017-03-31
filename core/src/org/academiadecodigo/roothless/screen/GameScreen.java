@@ -34,7 +34,7 @@ public class GameScreen implements Screen {
         int midPointY = (int) (gameHeigth / 2);
 
         world = new GameWorld();
-        gameRenderer = new GameRenderer(world, camera);
+
         Gdx.input.setInputProcessor(new InputListener(world.getPlayer()));
 
     }
@@ -42,7 +42,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
-
+        gameRenderer = new GameRenderer(world, camera);
         map = new TmxMapLoader().load("tiles/AwesomeMap.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
         camera.setToOrtho(false);
