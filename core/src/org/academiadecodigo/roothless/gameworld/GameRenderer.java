@@ -67,9 +67,7 @@ public class GameRenderer {
 
     public void drawEnemies() {
         batcher.begin();
-        System.out.println(enemyList.size());
         for (Enemy e : enemyList) {
-            System.out.println("tou ca");
             batcher.draw(e.getTextureRegion(),
                     e.getX(),
                     e.getY());

@@ -104,8 +104,8 @@ public class InputListener implements InputProcessor {
             case Input.Keys.DOWN:
                 //colision detection
                 alternateBack();
-                if (player.getPosY() + 32 >= 544) {
-                    player.setPosY(544);
+                if (player.getPosY() + 32 >= 512) {
+                    player.setPosY(512);
                 } else {
                     player.setPosY(player.getPosY() + 32);
                 }
@@ -114,8 +114,8 @@ public class InputListener implements InputProcessor {
             case Input.Keys.RIGHT:
                 //colision detection
                 alternateRight();
-                if(player.getPosX() + 32 >= 768) {
-                    player.setPosX(768);
+                if(player.getPosX() + 32 >= 736) {
+                    player.setPosX(736);
                 } else {
                     player.setPosX(player.getPosX() + 32);
                 }
@@ -144,8 +144,8 @@ public class InputListener implements InputProcessor {
             case Input.Keys.UP:
                 //colision detection
                 alternateBack();
-                if (player.getPosY() + 32 >= 768) {
-                    player.setPosY(768);
+                if (player.getPosY() + 32 >= 512) {
+                    player.setPosY(512);
                 } else {
                     player.setPosY(player.getPosY() + 32);
                 }

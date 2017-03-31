@@ -29,15 +29,31 @@ public class Enemy {
 
     public void enemyMovement() {
         double result = Math.random();
-
+        System.out.println(result);
         if (result <= 0.25) {
-            posY -= 32;
+            if (getY() - 32 <= 32) {
+                posY = 32;
+            } else {
+                posY -= 32;
+            }
         } else if(result >= 0.26 && result <= 0.50) {
-            posX += 32;
+            if (getY() + 32 >= 512) {
+                posY = 512;
+            } else {
+                posX += 32;
+            }
         } else if (result >= 0.51 && result <= 0.75) {
-            posY += 32;
+            if(getX() + 32 >= 736) {
+                posX = 736;
+            } else {
+                posX += 32;
+            }
         } else {
-            posX -= 32;
+            if (getX() - 32 <= 32) {
+                posX = 32;
+            } else {
+                posX -= 32;
+            }
         }
     }
 
