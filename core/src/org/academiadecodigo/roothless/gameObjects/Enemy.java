@@ -1,25 +1,20 @@
 package org.academiadecodigo.roothless.gameObjects;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 /**
- * Created by codecadet on 30/03/17.
+ * Created by codecadet on 31/03/17.
  */
-public class Player extends Sprite {
+public class Enemy {
 
     private int healthPoints;
     private int attack;
-    private static final int PLAYER_MOVEMENT = 32;
     private Vector2 position;
     private int width;
     private int height;
     private boolean isAlive;
 
-    public Player(float x, float y) {
+    public Enemy(float x, float y) {
         healthPoints = 5;
         attack = 1;
         position = new Vector2(x, y);
@@ -43,22 +38,12 @@ public class Player extends Sprite {
         this.attack = attack;
     }
 
-<<<<<<< HEAD
-    @Override
-    public void draw(Batch batch) {
-        update(Gdx.graphics.getDeltaTime());
-        super.draw(batch);
-    }
-
-    public void update(float delta){
-
-=======
     public boolean isAlive() {
         return isAlive;
     }
 
 
-    public void dead(){
+    public void dead() {
         isAlive = false;
     }
 
@@ -76,6 +61,5 @@ public class Player extends Sprite {
 
     public float getHeight() {
         return height;
->>>>>>> master
     }
 }
