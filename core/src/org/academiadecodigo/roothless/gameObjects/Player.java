@@ -22,6 +22,7 @@ public class Player extends Actor {
     private int moveCounter;
     private int pityCounter;
     private boolean alive = true;
+    private boolean animationSwitch;
 
 
     public Player(int posX, int posY) {
@@ -134,9 +135,19 @@ public class Player extends Actor {
         }
     }
 
+    public boolean isAnimationSwitch() {
+        return animationSwitch;
+    }
+
+    public void setAnimationSwitch(boolean animationSwitch) {
+        this.animationSwitch = animationSwitch;
+    }
+
     public void deathCheck() {
         if (healthPoints <= 0) {
             alive = false;
         }
+
+
     }
 }

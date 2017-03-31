@@ -20,7 +20,6 @@ public class InputListener implements InputProcessor {
     public boolean keyDown(int keycode) {
 
 
-
         if (keycode == Input.Keys.SPACE) {
             player.attack();
             return true;
@@ -75,25 +74,25 @@ public class InputListener implements InputProcessor {
         switch (keycode) {
             case Input.Keys.UP:
                 //colision detection
-                player.setTextureRegion(AssetLoader.back1);
+                alternateFront();
                 player.setPosY(player.getPosY() - 32);
                 return true;
 
             case Input.Keys.DOWN:
                 //colision detection
-                player.setTextureRegion(AssetLoader.front1);
+                alternateBack();
                 player.setPosY(player.getPosY() + 32);
                 return true;
 
             case Input.Keys.RIGHT:
                 //colision detection
-                player.setTextureRegion(AssetLoader.right1);
+                alternateRight();
                 player.setPosX(player.getPosX() + 32);
                 return true;
 
             case Input.Keys.LEFT:
                 //colision detection
-                player.setTextureRegion(AssetLoader.left1);
+                alternateLeft();
                 player.setPosX(player.getPosX() - 32);
                 return true;
 
@@ -109,25 +108,25 @@ public class InputListener implements InputProcessor {
         switch (keycode) {
             case Input.Keys.UP:
                 //colision detection
-                player.setTextureRegion(AssetLoader.front1);
+                alternateFront();
                 player.setPosY(player.getPosY() + 32);
                 return true;
 
             case Input.Keys.DOWN:
                 //colision detection
-                player.setTextureRegion(AssetLoader.left1);
+                alternateLeft();
                 player.setPosX(player.getPosX() - 32);
                 return true;
 
             case Input.Keys.RIGHT:
                 //colision detection
-                player.setTextureRegion(AssetLoader.back1);
+                alternateFront();
                 player.setPosY(player.getPosY() - 32);
                 return true;
 
             case Input.Keys.LEFT:
                 //colision detection
-                player.setTextureRegion(AssetLoader.right1);
+                alternateRight();
                 player.setPosX(player.getPosX() + 32);
                 return true;
 
@@ -135,5 +134,51 @@ public class InputListener implements InputProcessor {
                 return false;
 
         }
+    }
+
+    public void alternateRight() {
+        if (!player.isAnimationSwitch()) {
+            player.setTextureRegion(AssetLoader.right1);
+            player.setAnimationSwitch(true);
+        } else {
+            player.setTextureRegion(AssetLoader.right2);
+            player.setAnimationSwitch(false);
+        }
+    }
+
+    public void alternateLeft() {
+
+        if (!player.isAnimationSwitch()) {
+            player.setTextureRegion(AssetLoader.left1);
+            player.setAnimationSwitch(true);
+        } else {
+            player.setTextureRegion(AssetLoader.left2);
+            player.setAnimationSwitch(false);
+        }
+
+    }
+
+    public void alternateFront() {
+
+        if (!player.isAnimationSwitch()) {
+            player.setTextureRegion(AssetLoader.front1);
+            player.setAnimationSwitch(true);
+        } else {
+            player.setTextureRegion(AssetLoader.front2);
+            player.setAnimationSwitch(false);
+        }
+
+    }
+
+    public void alternateBack() {
+
+        if (!player.isAnimationSwitch()) {
+            player.setTextureRegion(AssetLoader.back1);
+            player.setAnimationSwitch(true);
+        } else {
+            player.setTextureRegion(AssetLoader.back2);
+            player.setAnimationSwitch(false);
+        }
+
     }
 }
