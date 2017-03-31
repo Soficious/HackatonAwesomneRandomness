@@ -10,7 +10,11 @@ public class Player {
 
     private int healthPoints;
     private int attack;
+<<<<<<< HEAD
+=======
+    private TextureRegion textureRegion;
     private static final int PLAYER_MOVEMENT = 32;
+>>>>>>> 28e65b766a2aaf0212e2dce29ccad2a7b2e67ebd
     private Vector2 position;
     private int width;
     private int height;

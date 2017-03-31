@@ -10,7 +10,6 @@ public class Player {
 
     private int healthPoints;
     private int attack;
-    private static final int PLAYER_MOVEMENT = 32;
     private Vector2 position;
     private int width;
     private int height;

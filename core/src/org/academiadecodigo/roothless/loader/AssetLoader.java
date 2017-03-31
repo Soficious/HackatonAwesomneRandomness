@@ -26,11 +26,18 @@ public class AssetLoader {
     public static Preferences prefs;
 
     public static void load() {
+        plyrDeath =Gdx.audio.newSound(Gdx.files.internal("sounds/playerDeath.mp3"));
+        plyrHit =Gdx.audio.newSound(Gdx.files.internal("sounds/playerHit.mp3"));
+        plyrAtk = Gdx.audio.newSound(Gdx.files.internal("sounds/playerAtack.mp3"));
+        footsteps = Gdx.audio.newSound(Gdx.files.internal("sounds/footsteps.wav"));
+        e1Atk = Gdx.audio.newSound(Gdx.files.internal("sounds/monsterAtack.wav"));
+        e1Death =Gdx.audio.newSound(Gdx.files.internal("sounds/mosterDeath.mp3"));
+
 
         playerSprite = new Texture(Gdx.files.internal("playerSprite.png"));
         enemy1Sprite = new Texture(Gdx.files.internal("enemy1Sprite.png"));
 
-
+        //player texture regions
         front1 = new TextureRegion(playerSprite, 0, 0, 32, 32);
         front2 = new TextureRegion(playerSprite, 32, 0, 32, 32);
         right1 = new TextureRegion(playerSprite, 64, 0, 32, 32);
@@ -48,6 +55,7 @@ public class AssetLoader {
         atkBack1 = new TextureRegion(playerSprite, 192, 32, 32, 32);
         atkBack2 = new TextureRegion(playerSprite, 224, 32, 32, 32);
 
+        //enemy texture regions
         e1Front1 = new TextureRegion(enemy1Sprite, 0, 0, 32, 32);
         e1Front2 = new TextureRegion(enemy1Sprite, 32, 0, 32, 32);
         e1Right1 = new TextureRegion(enemy1Sprite, 64, 0, 32, 32);

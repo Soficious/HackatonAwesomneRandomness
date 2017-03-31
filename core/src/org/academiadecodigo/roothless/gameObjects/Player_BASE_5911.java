@@ -10,17 +10,12 @@ public class Player {
 
     private int healthPoints;
     private int attack;
-    private static final int PLAYER_MOVEMENT = 32;
+    private TextureRegion textureRegion;
     private Vector2 position;
-    private int width;
-    private int height;
-    private boolean isAlive;
 
-    public Player(float x, float y) {
+    public Player() {
         healthPoints = 5;
         attack = 1;
-        position = new Vector2(x, y);
-        isAlive = true;
 
     }
 
@@ -38,30 +33,5 @@ public class Player {
 
     public void setAttack(int attack) {
         this.attack = attack;
-    }
-
-    public boolean isAlive() {
-        return isAlive;
-    }
-
-
-    public void dead(){
-        isAlive = false;
-    }
-
-    public float getX() {
-        return position.x;
-    }
-
-    public float getY() {
-        return position.y;
-    }
-
-    public float getWidth() {
-        return width;
-    }
-
-    public float getHeight() {
-        return height;
     }
 }

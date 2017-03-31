@@ -7,6 +7,9 @@ import org.academiadecodigo.roothless.Game;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.title = "dsfsdfsdf";
+		config.width = 800;
+		config.height = 576;
 		new LwjglApplication(new Game(), config);
 	}
 }
