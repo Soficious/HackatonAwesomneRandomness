@@ -1,12 +1,11 @@
 package org.academiadecodigo.roothless.gameObjects;
 
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 /**
- * Created by codecadet on 30/03/17.
+ * Created by codecadet on 31/03/17.
  */
-public class Player {
+public class Enemy {
 
     private int healthPoints;
     private int attack;
@@ -15,7 +14,7 @@ public class Player {
     private int height;
     private boolean isAlive;
 
-    public Player(float x, float y) {
+    public Enemy(float x, float y) {
         healthPoints = 5;
         attack = 1;
         position = new Vector2(x, y);
@@ -44,7 +43,7 @@ public class Player {
     }
 
 
-    public void dead(){
+    public void dead() {
         isAlive = false;
     }
 
