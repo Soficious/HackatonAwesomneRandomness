@@ -1,12 +1,15 @@
 package org.academiadecodigo.roothless.gameObjects;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 /**
  * Created by codecadet on 30/03/17.
  */
-public class Player {
+public class Player extends Sprite {
 
     private int healthPoints;
     private int attack;
@@ -34,5 +37,15 @@ public class Player {
 
     public void setAttack(int attack) {
         this.attack = attack;
+    }
+
+    @Override
+    public void draw(Batch batch) {
+        update(Gdx.graphics.getDeltaTime());
+        super.draw(batch);
+    }
+
+    public void update(float delta){
+
     }
 }

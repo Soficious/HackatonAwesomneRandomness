@@ -103,12 +103,12 @@ public class AssetLoader {
 
     public static void dispose() {
         // We must dispose of the texture when we are finished.
-        texture.dispose();
+       /* texture.dispose();
         dead.dispose();
         flap.dispose();
         coin.dispose();
         font.dispose();
-        shadow.dispose();
+        shadow.dispose();*/
     }
 
     public static void setHighScore(int val) {
