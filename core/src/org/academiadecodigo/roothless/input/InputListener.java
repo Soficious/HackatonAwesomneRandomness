@@ -94,26 +94,41 @@ public class InputListener implements InputProcessor {
             case Input.Keys.UP:
                 //colision detection
                 alternateFront();
-                player.setPosY(player.getPosY() - 32);
-                System.out.println("going up normal");
+                if (player.getPosY() - 32 <= 32) {
+                    player.setPosY(32);
+                } else {
+                    player.setPosY(player.getPosY() - 32);
+                }
                 return true;
 
             case Input.Keys.DOWN:
                 //colision detection
                 alternateBack();
-                player.setPosY(player.getPosY() + 32);
+                if (player.getPosY() + 32 >= 544) {
+                    player.setPosY(544);
+                } else {
+                    player.setPosY(player.getPosY() + 32);
+                }
                 return true;
 
             case Input.Keys.RIGHT:
                 //colision detection
                 alternateRight();
-                player.setPosX(player.getPosX() + 32);
+                if(player.getPosX() + 32 >= 768) {
+                    player.setPosX(768);
+                } else {
+                    player.setPosX(player.getPosX() + 32);
+                }
                 return true;
 
             case Input.Keys.LEFT:
                 //colision detection
                 alternateLeft();
-                player.setPosX(player.getPosX() - 32);
+                if (player.getPosX() - 32 <= 32) {
+                    player.setPosX(32);
+                } else {
+                    player.setPosX(player.getPosX() - 32);
+                }
                 return true;
 
             default:
@@ -129,25 +144,41 @@ public class InputListener implements InputProcessor {
             case Input.Keys.UP:
                 //colision detection
                 alternateBack();
-                player.setPosY(player.getPosY() + 32);
+                if (player.getPosY() + 32 >= 768) {
+                    player.setPosY(768);
+                } else {
+                    player.setPosY(player.getPosY() + 32);
+                }
                 return true;
 
             case Input.Keys.DOWN:
                 //colision detection
                 alternateLeft();
-                player.setPosX(player.getPosX() - 32);
+                if (player.getPosX() -32 <= 32) {
+                    player.setPosX(32);
+                } else {
+                    player.setPosX(player.getPosX() - 32);
+                }
                 return true;
 
             case Input.Keys.RIGHT:
                 //colision detection
                 alternateFront();
-                player.setPosY(player.getPosY() - 32);
+                if (player.getPosY() -32 <= 32) {
+                    player.setPosY(32);
+                } else {
+                    player.setPosY(player.getPosY() - 32);
+                }
                 return true;
 
             case Input.Keys.LEFT:
                 //colision detection
                 alternateRight();
-                player.setPosX(player.getPosX() + 32);
+                if (player.getPosX() +32 >= 768) {
+                    player.setPosX(768);
+                } else {
+                    player.setPosX(player.getPosX() + 32);
+                }
                 return true;
 
             default:
