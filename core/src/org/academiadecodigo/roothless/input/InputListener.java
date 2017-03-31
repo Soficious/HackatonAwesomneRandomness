@@ -2,8 +2,11 @@ package org.academiadecodigo.roothless.input;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import org.academiadecodigo.roothless.gameObjects.Enemy;
 import org.academiadecodigo.roothless.gameObjects.Player;
 import org.academiadecodigo.roothless.loader.AssetLoader;
+
+import java.util.ArrayList;
 
 /**
  * Created by codecadet on 30/03/17.
@@ -11,9 +14,11 @@ import org.academiadecodigo.roothless.loader.AssetLoader;
 public class InputListener implements InputProcessor {
 
     private Player player;
+    private ArrayList<Enemy> enemyList;
 
-    public InputListener(Player player) {
+    public InputListener(Player player, ArrayList<Enemy> enemyList) {
         this.player = player;
+        this.enemyList = enemyList;;
     }
 
     @Override
@@ -26,8 +31,10 @@ public class InputListener implements InputProcessor {
         }
 
         if (!player.isInverted()) {
+            enemyMove();
             return regularMovement(keycode);
         } else {
+            enemyMove();
             return invertedMovement(keycode);
         }
     }
@@ -180,6 +187,12 @@ public class InputListener implements InputProcessor {
             player.setTextureRegion(AssetLoader.back2);
             player.setAnimationSwitch(false);
         }
-
     }
+
+    public void enemyMove() {
+        for (Enemy e : enemyList) {
+            e.enemyMovement();
+        }
+    }
+
 }

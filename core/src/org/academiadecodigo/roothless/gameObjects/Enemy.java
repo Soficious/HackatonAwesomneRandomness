@@ -1,6 +1,8 @@
 package org.academiadecodigo.roothless.gameObjects;
 
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import org.academiadecodigo.roothless.loader.AssetLoader;
 
 /**
  * Created by codecadet on 31/03/17.
@@ -9,17 +11,34 @@ public class Enemy {
 
     private int healthPoints;
     private int attack;
-    private Vector2 position;
+    private int posX;
+    private int posY;
     private int width;
     private int height;
     private boolean isAlive;
+    private TextureRegion textureRegion;
 
-    public Enemy(float x, float y) {
-        healthPoints = 5;
+    public Enemy(int x, int y, TextureRegion textureRegion) {
+        healthPoints = 1;
         attack = 1;
-        position = new Vector2(x, y);
+        this.posX = x;
+        this.posY = y;
         isAlive = true;
+        this.textureRegion = textureRegion;
+    }
 
+    public void enemyMovement() {
+        double result = Math.random();
+
+        if (result <= 0.25) {
+            posY -= 32;
+        } else if(result >= 0.26 && result <= 0.50) {
+            posX += 32;
+        } else if (result >= 0.51 && result <= 0.75) {
+            posY += 32;
+        } else {
+            posX -= 32;
+        }
     }
 
     public int getHealthPoints() {
@@ -47,12 +66,20 @@ public class Enemy {
         isAlive = false;
     }
 
-    public float getX() {
-        return position.x;
+    public int getX() {
+        return posX;
     }
 
-    public float getY() {
-        return position.y;
+    public int getY() {
+        return posY;
+    }
+
+    public TextureRegion getTextureRegion() {
+        return textureRegion;
+    }
+
+    public void setTextureRegion(TextureRegion textureRegion) {
+        this.textureRegion = textureRegion;
     }
 
     public float getWidth() {
