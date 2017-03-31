@@ -2,6 +2,7 @@ package org.academiadecodigo.roothless.gameObjects;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import org.academiadecodigo.roothless.util.RNG;
 
 /**
@@ -19,11 +20,13 @@ public class Player {
     private boolean inverted;
     private int moveCounter;
     private int pityCounter;
+    private boolean alive = true;
 
 
     public Player() {
         healthPoints = 5;
         attack = 1;
+
     }
 
     public int getHealthPoints() {
@@ -93,6 +96,22 @@ public class Player {
         this.moveCounter = moveCounter;
     }
 
+    public int getPityCounter() {
+        return pityCounter;
+    }
+
+    public void setPityCounter(int pityCounter) {
+        this.pityCounter = pityCounter;
+    }
+
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+
     public void attack() {}
 
     public void inverterSwitch () {
@@ -101,6 +120,12 @@ public class Player {
             inverted = true;
         } else {
             moveCounter++;
+        }
+    }
+
+    public void deathCheck() {
+        if (healthPoints <= 0) {
+            alive = false;
         }
     }
 }
