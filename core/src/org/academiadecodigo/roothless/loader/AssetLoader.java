@@ -31,11 +31,11 @@ public class AssetLoader {
         plyrAtk = Gdx.audio.newSound(Gdx.files.internal("sounds/playerAtack.mp3"));
         footsteps = Gdx.audio.newSound(Gdx.files.internal("sounds/footsteps.wav"));
         e1Atk = Gdx.audio.newSound(Gdx.files.internal("sounds/monsterAtack.wav"));
-        e1Death =Gdx.audio.newSound(Gdx.files.internal("sounds/mosterDeath.mp3"));
+        e1Death =Gdx.audio.newSound(Gdx.files.internal("sounds/monsterDeath.mp3"));
 
 
-        playerSprite = new Texture(Gdx.files.internal("playerSprite.png"));
-        enemy1Sprite = new Texture(Gdx.files.internal("enemy1Sprite.png"));
+        playerSprite = new Texture(Gdx.files.internal("spritesheets/playerSprite.png"));
+        enemy1Sprite = new Texture(Gdx.files.internal("spritesheets/enemy1Sprite.png"));
 
         //player texture regions
         front1 = new TextureRegion(playerSprite, 0, 0, 32, 32);

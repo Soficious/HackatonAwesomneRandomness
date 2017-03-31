@@ -8,7 +8,7 @@ import org.academiadecodigo.roothless.gameObjects.Player;
  */
 public class GameWorld {
 
-    private Player player = new Player(0, 574);
+    private Player player;
     private Enemy enemy;
     private boolean isAlive = false;
     private GameState currentState;
@@ -19,6 +19,7 @@ public class GameWorld {
 
     public GameWorld() {
         currentState = GameState.READY;
+        player = new Player(125, 80);
 
     }
 
@@ -29,4 +30,6 @@ public class GameWorld {
     public Enemy getEnemy() {
         return enemy;
     }
+
+
 }

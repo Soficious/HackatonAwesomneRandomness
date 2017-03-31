@@ -1,6 +1,8 @@
 package org.academiadecodigo.roothless.gameworld;
 
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -27,20 +29,22 @@ public class GameRenderer {
     private Enemy enemy;
     private boolean isEnemyAlive = true;
 
-    public GameRenderer(GameWorld world) {
+    public GameRenderer(GameWorld world, OrthographicCamera camera) {
         this.world = world;
-        cam = new OrthographicCamera();
         batcher = new SpriteBatch();
-        batcher.setProjectionMatrix(cam.combined);
+        this.cam = camera;
+        batcher.setProjectionMatrix(camera.combined);
         shapeRenderer = new ShapeRenderer();
-        shapeRenderer.setProjectionMatrix(cam.combined);
+        shapeRenderer.setProjectionMatrix(camera.combined);
+        AssetLoader.load();
         initGameObjects();
         initAssets();
 
     }
 
     private void initAssets() {
-        playerAnimation = AssetLoader.playerAnimation;
+        playerTexture = AssetLoader.front1;
+        player.setTextureRegion(playerTexture);
     }
 
     public void initGameObjects() {
@@ -51,6 +55,9 @@ public class GameRenderer {
     }
 
     public void drawPlayer() {
+        batcher.begin();
+        batcher.draw(playerTexture, player.getPosX(), player.getPosY());
+        batcher.end();
     }
 
 

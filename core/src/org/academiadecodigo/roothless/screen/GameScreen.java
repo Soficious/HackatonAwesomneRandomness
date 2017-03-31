@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import org.academiadecodigo.roothless.gameObjects.Player;
 import org.academiadecodigo.roothless.gameworld.GameRenderer;
 import org.academiadecodigo.roothless.gameworld.GameWorld;
 import org.academiadecodigo.roothless.input.InputListener;
@@ -30,22 +29,26 @@ public class GameScreen implements Screen {
         float screebHeigth = Gdx.graphics.getHeight();
         float gameWidth = 136;
         float gameHeigth = screebHeigth / (screenWidth / gameWidth);
+        camera = new OrthographicCamera();
 
         int midPointY = (int) (gameHeigth / 2);
 
         world = new GameWorld();
-        //renderer = new GameRenderer(world);
-
-        Gdx.input.setInputProcessor(new InputListener());
+        gameRenderer = new GameRenderer(world, camera);
+        Gdx.input.setInputProcessor(new InputListener(world.getPlayer()));
 
     }
 
 
     @Override
     public void show() {
-        map = new TmxMapLoader().load( "tiles/AwesomeMap.tmx");
+
+        map = new TmxMapLoader().load("tiles/AwesomeMap.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
-        camera = new OrthographicCamera();
+        camera.setToOrtho(false);
+        AssetLoader.load();
+        gameRenderer.initGameObjects();
+        renderer.setView(camera);
 
     }
 
@@ -53,16 +56,14 @@ public class GameScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        AssetLoader.load();
-        renderer.setView(camera);
         renderer.render();
         gameRenderer.drawPlayer();
     }
 
     @Override
     public void resize(int width, int height) {
-        camera.viewportWidth = width;
-        camera.viewportHeight = height;
+        camera.viewportWidth = width * 2;
+        camera.viewportHeight = height * 2;
         camera.update();
     }
 
@@ -78,12 +79,12 @@ public class GameScreen implements Screen {
 
     @Override
     public void hide() {
-        map.dispose();
-        renderer.dispose();
+
     }
 
     @Override
     public void dispose() {
-
+        map.dispose();
+        renderer.dispose();
     }
 }
