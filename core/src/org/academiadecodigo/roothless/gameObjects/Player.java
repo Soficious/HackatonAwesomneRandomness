@@ -29,7 +29,11 @@ public class Player extends Actor{
         attack = 1;
         this.posX = posX;
         this.posY = posY;
+        hitbox = new Rectangle();
+
     }
+
+
 
     public int getHealthPoints() {
         return healthPoints;
@@ -129,5 +133,9 @@ public class Player extends Actor{
         if (healthPoints <= 0) {
             alive = false;
         }
+    }
+
+    public Rectangle getRectangle() {
+        return hitbox;
     }
 }

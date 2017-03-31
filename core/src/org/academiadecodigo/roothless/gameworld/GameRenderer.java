@@ -39,7 +39,6 @@ public class GameRenderer {
         AssetLoader.load();
         initGameObjects();
         initAssets();
-
     }
 
     private void initAssets() {

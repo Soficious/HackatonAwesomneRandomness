@@ -2,7 +2,11 @@ package org.academiadecodigo.roothless.input;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.maps.MapObject;
 import org.academiadecodigo.roothless.gameObjects.Player;
+import org.academiadecodigo.roothless.gameworld.GameWorld;
+import org.academiadecodigo.roothless.loader.AssetLoader;
+import org.academiadecodigo.roothless.screen.GameScreen;
 
 /**
  * Created by codecadet on 30/03/17.
@@ -10,15 +14,15 @@ import org.academiadecodigo.roothless.gameObjects.Player;
 public class InputListener implements InputProcessor {
 
     private Player player;
+    private GameWorld world;
 
     public InputListener(Player player) {
         this.player = player;
+        world = new GameWorld();
     }
 
     @Override
     public boolean keyDown(int keycode) {
-
-
 
         if (keycode == Input.Keys.SPACE) {
             player.attack();
@@ -67,6 +71,7 @@ public class InputListener implements InputProcessor {
         return false;
     }
 
+
     public boolean regularMovement(int keycode) {
 
         player.inverterSwitch();
@@ -74,22 +79,38 @@ public class InputListener implements InputProcessor {
         switch (keycode) {
             case Input.Keys.UP:
                 //colision detection
-                player.setPosY(player.getPosY() - 32);
+                if (world.collide()) {
+                    player.setTextureRegion(AssetLoader.atkBack1);
+                    player.setPosY(player.getPosY() - 32);
+                    return true;
+                }
                 return true;
 
             case Input.Keys.DOWN:
                 //colision detection
-                player.setPosY(player.getPosY() + 32);
+                if (world.collide()) {
+                    player.setTextureRegion(AssetLoader.front1);
+                    player.setPosY(player.getPosY() + 32);
+                    return true;
+                }
                 return true;
 
             case Input.Keys.RIGHT:
                 //colision detection
-                player.setPosX(player.getPosX() + 32);
+                if (world.collide()) {
+                    player.setTextureRegion(AssetLoader.right1);
+                    player.setPosX(player.getPosX() + 32);
+                    return true;
+                }
                 return true;
 
             case Input.Keys.LEFT:
                 //colision detection
-                player.setPosX(player.getPosX() - 32);
+                if (world.collide()) {
+                    player.setTextureRegion(AssetLoader.left1);
+                    player.setPosX(player.getPosX() - 32);
+                    return true;
+                }
                 return true;
 
             default:
