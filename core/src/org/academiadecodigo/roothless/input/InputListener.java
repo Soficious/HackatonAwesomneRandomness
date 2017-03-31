@@ -76,6 +76,7 @@ public class InputListener implements InputProcessor {
                 //colision detection
                 alternateFront();
                 player.setPosY(player.getPosY() - 32);
+                System.out.println("going up normal");
                 return true;
 
             case Input.Keys.DOWN:
@@ -108,7 +109,7 @@ public class InputListener implements InputProcessor {
         switch (keycode) {
             case Input.Keys.UP:
                 //colision detection
-                alternateFront();
+                alternateBack();
                 player.setPosY(player.getPosY() + 32);
                 return true;
 
